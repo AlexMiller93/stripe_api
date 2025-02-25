@@ -40,6 +40,7 @@ def buy_item(request, id: int):
     except Item.DoesNotExist:
         return JsonResponse({'error': 'Item not found'}, status=404)
 
+
 def item_detail(request, id: int):
     """ 
         Метод для получения HTML страницы для отображения информации выбранном предмете Item.
@@ -57,3 +58,6 @@ def item_detail(request, id: int):
             })
     except Item.DoesNotExist:
         return JsonResponse({'error': 'Item not found'}, status=404)
+    
+def buy_order(request, order_id: int):
+    return HttpResponse(f"Order {order_id} has been successfully processed!")
