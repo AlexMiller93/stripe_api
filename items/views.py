@@ -122,7 +122,17 @@ def buy_order(request, order_id: int):
         return JsonResponse({'error': 'Order not found'}, status=404)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
-    
+
+
+def order_detail(request, order_id: int):
+    try:
+        order = Order.objects.get(id=order_id)
+        return render(request, 'order_detail.html', {
+            'order': order,
+            'total_price': order.get_total_price(),
+            })
+    except Order.DoesNotExist:
+        return JsonResponse({'error': 'Order not found'}, status=404)
 
 def test_buy_order(request, order_id: int):
     # if or

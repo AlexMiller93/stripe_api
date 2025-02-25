@@ -1,3 +1,4 @@
+import decimal
 from django.db import models
 
 # Create your models here.
@@ -52,6 +53,8 @@ class Order(models.Model):
 
         if self.tax is not None:
             total += (self.tax.percentage / 100) * total
+        
+        return total.quantize(decimal.Decimal('0.01'))  # rounding to two decimal places
 
     def __str__(self):
         return f"Order #{self.id} - {self.created_at.strftime('%m-%d')}"

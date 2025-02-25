@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order #{{ order.id }}</title>
+</head>
+<body>
+    <h2>Order #{{ order.id }}</h2>
+    <ul>
+        {% for item in order.items.all %}
+            <li>{{ item.name }} - ${{ item.price }}</li>
+        {% endfor %}
+
+        {% if order.discount %}
+            <p>Discount: {{ order.discount.name }} (-{{ order.discount.percentage }}%)</p>
+        {% else %}
+            <p>Discount: - </p>
+        {% endif %}
+
+        {% if order.tax %}
+            <p>Tax: {{ order.tax.name }} (+{{ order.tax.percentage }}%)</p>
+        {% else %}
+            <p>Tax: - </p>
+        {% endif %}
+    </ul>
+    
+
+    <p><strong>Total: ${{ total_price }}</strong></p>
+    <a href="/buy_order/{{ order.id }}/">Pay Now</a>
+</body>
+</html>
