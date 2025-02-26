@@ -37,7 +37,7 @@ def get_discount_from_order(order: Order):
 
     return discount_id
 
-def create_checkout_session(item: Item) -> list[list | Any | dict] | Any | dict:
+def create_checkout_session(item: Item) -> list[list]:
     """ Creates and returns a checkout session for the given item."""
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
@@ -60,7 +60,7 @@ def create_checkout_session(item: Item) -> list[list | Any | dict] | Any | dict:
 
     return session
 
-def create_checkout_session_from_line_items(line_items : list[dict], discount_id: int | None) -> list[list | Any | dict] | Any | dict:
+def create_checkout_session_from_line_items(line_items : list[dict], discount_id: int) -> list[list]:
     """ Creates and returns a checkout session for the given line_items."""
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
