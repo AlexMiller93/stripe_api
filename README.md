@@ -3,8 +3,8 @@ Django + Stripe API
 
 ## Запуск API
 1. Склонировать репозиторий
-` git clone https://github.com/AlexMiller93/stripe_api.git`
-` cd stripe_api`
+`git clone https://github.com/AlexMiller93/stripe_api.git`
+`cd stripe_api`
 
 2. Перейти в документацию stripe https://docs.stripe.com/ и создать аккаунт, передать credentials в .env по аналогии с .env.example
 
