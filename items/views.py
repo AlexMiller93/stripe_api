@@ -26,7 +26,6 @@ def buy_item(request, id: int):
     except Item.DoesNotExist:
         return JsonResponse({'error': 'Item not found'}, status=404)
 
-
 def item_detail(request, id: int):
     """ Render item_detail template with item and Stripe Publishable Key. """
 
@@ -39,7 +38,6 @@ def item_detail(request, id: int):
     except Item.DoesNotExist:
         return JsonResponse({'error': 'Item not found'}, status=404)
     
-
 def buy_order(request, order_id: int):
     """ Get session for checkout and return session id. """
 
@@ -65,10 +63,9 @@ def buy_order(request, order_id: int):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
-
 def order_detail(request, order_id: int):
     """ Render order_detail template with order and total price. """
-    
+
     try:
         order = Order.objects.get(id=order_id)
         return render(request, 'order_detail.html', {

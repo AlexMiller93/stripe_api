@@ -1,4 +1,3 @@
-from typing import Any
 from django.conf import settings
 import stripe
 
@@ -21,7 +20,6 @@ def get_tax_from_order(order: Order) -> int:
         tax_id = tax.id
 
     return tax_id
-
 
 def get_discount_from_order(order: Order):
     """ Returns the discount id from the given order."""
